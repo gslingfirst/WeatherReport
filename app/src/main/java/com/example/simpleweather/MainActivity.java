@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -152,6 +153,34 @@ public class MainActivity extends AppCompatActivity {
         String type = weatherOfCity.getData().getForecast()[0].getType();
         TextView wea_type = (TextView) findViewById(R.id.weather_condition);
         wea_type.setText(type);
+
+        LinearLayout mainWindow = (LinearLayout) findViewById(R.id.main_window);
+        ImageView weaIcon = (ImageView) findViewById(R.id.weather_icon);
+        if(type.indexOf("晴") >= 0)
+        {
+            mainWindow.setBackgroundResource(R.drawable.sunny);
+            weaIcon.setBackgroundResource(R.drawable.sunnyday);
+        }
+        if(type.indexOf("多云") >= 0)
+        {
+            mainWindow.setBackgroundResource(R.drawable.cloudy);
+            weaIcon.setBackgroundResource(R.drawable.cloudyday);
+        }
+        if(type.indexOf("雨") >= 0)
+        {
+            mainWindow.setBackgroundResource(R.drawable.rain);
+            weaIcon.setBackgroundResource(R.drawable.rainyday);
+        }
+        if(type.indexOf("雷") >= 0)
+        {
+            mainWindow.setBackgroundResource(R.drawable.thunder);
+            weaIcon.setBackgroundResource(R.drawable.thunderrain);
+        }
+        if(type.indexOf("雪") >= 0)
+        {
+            mainWindow.setBackgroundResource(R.drawable.snow);
+            weaIcon.setBackgroundResource(R.drawable.snowyday);
+        }
 
         String range = weatherOfCity.getData().getForecast()[0].getLow().substring(3) + "--" + weatherOfCity.getData().getForecast()[0].getHigh().substring(3);
         TextView tem_range = (TextView) findViewById(R.id.tem_range);
