@@ -10,5 +10,6 @@
     tools:context=".MainActivity">
 
     <include layout="@layout/title" />
+
     <include layout="@layout/displayinfo" />
 </LinearLayout>
